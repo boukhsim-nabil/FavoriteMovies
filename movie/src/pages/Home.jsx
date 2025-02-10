@@ -1,10 +1,15 @@
+import MovieCard from "../../component/MovieCard";
+import { useState } from "react";
+
 function Home() {
+    const [seachQuery, setSearchQuery]= useState("");
+
     // Déclaration d'un tableau de films
     const movies = [
         {id: 1, title: "John Wick", release_date: "2020"},
-        {id: 2, title: "John Wick 2", release_date: "2010"},
-        {id: 3, title: "John Wick 3", release_date: "2020"},
-        {id: 4, title: "John Wick 4", release_date: "2020"},
+        {id: 2, title: "Terminator", release_date: "2010"},
+        {id: 3, title: "Lord of the ring", release_date: "2020"},
+        {id: 4, title: "The matrix", release_date: "2020"},
     ];
     const handlSearch  = ()=>{
 
@@ -14,7 +19,10 @@ function Home() {
         // Div conteneur principal avec la classe "home"
         <div className="home">
             <from  onSubmite={handlSearch} className="search-form">
-                <input type="text" placeholder="search for movies ..." className="search-input" />
+                <input type="text" placeholder="search for movies ..." className="search-input"  
+                value={searchQuery}
+                onChange={(e)=> setSearchQuery(e.target.value)}/>
+                <button type="submite" className="search-button">Search</button>
             </from>
 
             {/* Div pour la grille de films */}
